@@ -3,35 +3,29 @@ package com.doughuang;
 
 public class Card
 {
-    private int cardNum;
+    //private int cardNum;
+    private int rank, suit;
+
     final static String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
     final static String[] ranks = {"2","3","4","5","6","7","8", "9","10", "Jack", "Queen", "King", "Ace"};
 
-    Card (int theCard) {
-        setCardNum (theCard);
+    Card(int suit, int rank)
+    {
+        this.rank=rank;
+        this.suit=suit;
     }
 
-    public void setCardNum (int theCard) {
-        cardNum = (theCard >= 0 && theCard <= 51)? theCard: 0;
+    public @Override String toString()
+    {
+        return ranks[rank] + " of " + suits[suit];
     }
 
-    public int getCardNum() {
-        return cardNum;
+    public int getRank() {
+        return rank;
     }
 
-    public String toString() {
-        return ranks[cardNum%13] + " of " + suits[cardNum/13];
+    public int getSuit() {
+        return suit;
     }
 
-    public String getSuit() {
-        return suits[cardNum/13];
-    }
-
-    public String getRank() {
-        return ranks[cardNum%13];
-    }
-
-    public int getValue() {
-        return cardNum%13;
-    }
 }

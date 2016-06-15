@@ -1,45 +1,50 @@
 package com.doughuang;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Random;
 
 public class DeckOfCards implements Deck
 {
-    private Card[] cards;
-    private int topCard;
+
+    private ArrayList<Card> cards;
+    private ArrayList<Player> players;
 
     public DeckOfCards() {
-        cards = new Card[52];
+        cards = new ArrayList<Card>();
     }
 
     public void create( int numberOfSuits, int numberOfRanks ){
-        for (int i = 0; i < cards.length; i++)
-            cards[i] = new Card(i);
+
+        //Array.asList([])
+        for (int a=0; a<numberOfSuits; a++)
+        {
+            for (int b=0; b<numberOfRanks; b++)
+            {
+                cards.add( new Card(a,b) );
+            }
+        }
     }
 
     public void shuffle() {
-
-        topCard = 0;
-
-        for (int i = 0; i < 1000; i++) {
-            int j = (int)(Math.random()*52);
-            int k = (int)(Math.random()*52);
-            Card tmpCard = cards[j];
-            cards[j] = cards[k];
-            cards[k] = tmpCard;
+        int index_1, index_2;
+        Random generator = new Random();
+        Card temp;
+        for (int i = 0; i < 100; i++) {
+            index_1 = generator.nextInt(cards.size() - 1);
+            index_2 = generator.nextInt(cards.size() - 1);
+            temp = (Card) cards.get(index_2);
+            cards.set(index_2, cards.get(index_1));
+            cards.set(index_1, temp);
         }
     }
 
     public Card deal() {
-        Card theCard;
-        if (topCard < cards.length) {
-            theCard = cards[topCard];
-            topCard++;
-        }
-        else
-            theCard = null;
+        return cards.remove( 0 );
+    }
 
-        return theCard;
+    public int getTotalCards()
+    {
+        return cards.size();
     }
 
 }
