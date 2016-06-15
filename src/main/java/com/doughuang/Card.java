@@ -34,7 +34,4 @@ public class Card
     public int getValue() {
         return cardNum%13;
     }
-    ////////////////////
-
-    ////////////////////
 }
