@@ -12,9 +12,9 @@ git clone  https://github.com/doughuang168/wargame
 
 ### How to Run ###
 
-- java -jar build/libs/war-1.0-SNAPSHOT.jar 
+- java -jar build/libs/war-1.0-SNAPSHOT.jar 4 13 2
+- 4 is numberOfSuits, 13 is numberOfRanks, 2 is numberOfPlayers
 
- 
 ### Game Rule ###
  The play consists of the number of tricks. 
 Each trick is played as follows: each player (in no particular order) 
