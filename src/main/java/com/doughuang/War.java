@@ -123,5 +123,5 @@ public class War {
         System.out.println("War game end");
 
     }
-    
+
 }

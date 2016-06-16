@@ -12,7 +12,6 @@ public class Player implements Iterator {
     private ArrayList<Card> faceUp;
     private String id;
     protected int myIndex = 0;
-    //final private int HANDSIZE;
 
     public Player(){
         //Instantiates hand as a new array.

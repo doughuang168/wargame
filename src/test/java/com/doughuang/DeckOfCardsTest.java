@@ -1,45 +1,45 @@
 package com.doughuang;
 import org.junit.*;
+import org.junit.rules.ExpectedException;
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 import java.util.*;
 
 public class DeckOfCardsTest {
-    private Collection collection;
 
-    @BeforeClass
-    public static void oneTimeSetUp() {
-        // one-time initialization code
-        System.out.println("@BeforeClass - oneTimeSetUp");
-    }
-
-    @AfterClass
-    public static void oneTimeTearDown() {
-        // one-time cleanup code
-        System.out.println("@AfterClass - oneTimeTearDown");
-    }
+    private DeckOfCards myDeck;
 
     @Before
     public void setUp() {
-        collection = new ArrayList();
+        myDeck = new DeckOfCards();
         System.out.println("@Before - setUp");
     }
 
-    @After
-    public void tearDown() {
-        collection.clear();
-        System.out.println("@After - tearDown");
-    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
 
     @Test
-    public void testEmptyCollection() {
-        assertTrue(collection.isEmpty());
-        System.out.println("@Test - testEmptyCollection");
+    public void testIndexOutOfBoundsExceptionOfCreate() {
+
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage(containsString("suit is out of range"));
+
+        int a = 14;
+        int b = 5;
+
+        myDeck.create(a,b);
     }
 
+
     @Test
-    public void testOneItemCollection() {
-        collection.add("itemA");
-        assertEquals(1, collection.size());
-        System.out.println("@Test - testOneItemCollection");
+    public void testCardSuite() {
+        myDeck.create(4,13);
+        assertTrue(myDeck.getTotalCards() == 52);
+        System.out.println("@Test - getTotalCards");
     }
+
+
 }

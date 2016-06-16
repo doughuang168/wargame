@@ -1,6 +1,5 @@
 package com.doughuang;
 
-
 public class Card
 {
     //private int cardNum;
@@ -13,6 +12,14 @@ public class Card
     {
         this.rank=rank;
         this.suit=suit;
+
+        if (suit > suits.length) {
+            throw new IndexOutOfBoundsException("suit is out of range");
+        }
+
+        if (rank > ranks.length) {
+            throw new IndexOutOfBoundsException("rank is out of range");
+        }
     }
 
     public @Override String toString()
